@@ -1,0 +1,95 @@
+<!--pages/rank/rank.wxml-->
+<wxs module="m1">
+  var randomTime = function () {
+    return getDate().getTime()
+  }
+
+  module.exports = {randomTime: randomTime}
+</wxs>
+<l-tab-bar bg-color="{{isDark ? '#1e1f25' : 'white'}}" list="{{list}}" />
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="rank">
+    <view class="select-mode">
+      <view class="{{!isTotal ? 'mode-left mode-one' : 'mode-left'}}" data-status="{{false}}" bindtap="clickMode">日排行
+      </view>
+      <view class="{{isTotal ? 'mode-right mode-two' : 'mode-right'}}" data-status="{{true}}" bindtap="clickMode">总排行
+      </view>
+
+    </view>
+    <view class="rank_pre" wx:if="{{preThree[0]}}">
+      <view class="two">
+        <image src="{{preThree[1]['avatarUrl'] ? preThree[1]['avatarUrl'] + '?t=' + m1.randomTime() : normalAvator}}" lazy-load="{{true}}">
+        </image>
+        <text class="user_name">{{preThree[1] ? preThree[1].username : '虚位以待'}}</text>
+        <text>{{preThree[1] ? preThree[1].score + '分' : '0分'}}</text>
+        <text class="marginb">{{preThree[1] ? preThree[1].consume : '00分00秒'}}</text>
+        <view class="piilar"></view>
+      </view>
+      <view class="one">
+        <image src="{{preThree[0]['avatarUrl'] ? preThree[0]['avatarUrl'] + '?t=' + m1.randomTime() : normalAvator}}" lazy-load="{{true}}">
+        </image>
+        <text class="user_name">{{preThree[0] ? preThree[0].username : '虚位以待'}}</text>
+        <text>{{preThree[0] ? preThree[0].score + '分' : '0分'}}</text>
+        <text class="marginb">{{preThree[0] ? preThree[0].consume : '00分00秒'}}</text>
+        <view class="piilar"></view>
+      </view>
+      <view class="three">
+        <image src="{{preThree[2]['avatarUrl'] ? preThree[2]['avatarUrl'] + '?t=' + m1.randomTime() : normalAvator}}" lazy-load="{{true}}">
+        </image>
+        <text class="user_name">{{preThree[2] ? preThree[2].username : '虚位以待'}}</text>
+        <text>{{preThree[2] ? preThree[2].score + '分' : '0分'}}</text>
+        <text class="marginb">{{preThree[2] ? preThree[2].consume : '00分00秒'}}</text>
+        <view class="piilar"></view>
+      </view>
+    </view>
+    <view class="rank_pre" wx:else>
+      暂无排行，快去提升你的排名吧~
+    </view>
+    <view class="rank_other">
+      <view class="rank_list rank_title">
+        <view class="ranknum">名次</view>
+        <view class="user_info">
+          <view class="name">
+            <text>昵称/用时</text>
+          </view>
+        </view>
+        <view class="grade">分数</view>
+      </view>
+      <view class="rank_list" wx:for="{{isTotal ? rankList['total'] : rankList['now']}}" wx:key="rank">
+        <view class="ranknum">
+          <image wx:if="{{3 > index}}" class="pres"
+            src="{{index == 0 ? '../../img/mingci1.png' : (index == 1 ? '../../img/mingci2.png' : (index == 2 ? '../../img/mingci3.png': ''))}}"
+            lazy-load="{{true}}"></image>
+          <text wx:else>{{index+1}}</text>
+        </view>
+        <view class="user_info">
+          <image
+            style="width:50px;height:50px;border-radius:50px 50px;border: {{item['gender'] == 1 ? ' 2px solid #3aa1ff' : (item['gender'] == 2 ? '2px solid pink' : 'none')}};"
+            src="{{item['avatarUrl'] ? item['avatarUrl'] + '?t=' + m1.randomTime() : normalAvator}}" lazy-load="{{true}}"></image>
+          <view class="name rankname">
+            <text class="user_name" style="color:{{3 > index ? '#fd7349' : 'inherit'}}">{{item.username}}</text>
+            <text>{{item.consume}}</text>
+          </view>
+        </view>
+        <view class="grade rankgrade">{{item.score + '分'}}</view>
+      </view>
+      <view wx:if="{{(isTotal ? rankList['total'].length : rankList['now'].length) == 0}}"
+        style="display:flex;flex-direction:column;align-items:center;padding:30rpx;">
+        <image src="/img/zanwu.png" style="width:200px;height:200px"></image>
+      </view>
+
+    </view>
+    <!-- <view class="rank_list self" wx:if="{{selfRank['username']}}">
+      <view class="ranknum">{{selfRank['rank'] ? selfRank['rank'] : '50+'}}</view>
+      <view class="user_info">
+        <image style="width:50px;height:50px;border-radius:50px 50px"
+          src="{{selfRank['avatarUrl'] ? selfRank['avatarUrl'] : userInfo['avatarUrl']}}" lazy-load="{{true}}"></image>
+        <view class="name">
+          <text class="user_name">{{selfRank['username']}}</text>
+          <text>{{selfRank['consume'] ? selfRank['consume'] : '00分00秒'}}</text>
+        </view>
+      </view>
+      <view class="grade">{{selfRank['score'] ? selfRank['score']+'分' : '0分'}}</view>
+    </view> -->
+  </view>
+</view>

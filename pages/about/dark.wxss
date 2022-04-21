@@ -1,0 +1,10 @@
+
+.dark .about {
+  background: #1e1f25;
+  color: #8a8b8e;
+  transition: all ease .3s;
+}
+.dark .content {
+  background: #27282e;
+  transition: all ease .3s;
+}

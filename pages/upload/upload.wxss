@@ -1,0 +1,56 @@
+/* pages/upload/upload.wxss */
+.upload {
+  min-height: 100vh;
+  background: #f6f8fd;
+}
+
+.transi,
+.percent {
+  transition: all .5s;
+}
+
+.upload-box {
+  background: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.upload-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.help {
+  color: #8a8a8a;
+  font-size: 12px;
+}
+
+.info {
+  width: 80%;
+}
+
+.info text {
+  margin-bottom: 5px;
+}
+
+.percent {
+  padding-left: 5px;
+}
+
+.upload-top image {
+  width: 50px;
+  height: 50px;
+}
+
+button {
+  background: #42b983;
+  color: white;
+}
+.card {
+  margin: 10px !important;
+}
+@import './dark.wxss'

@@ -1,0 +1,30 @@
+
+.dark .q_question{
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .quiz_choice button {
+background:  #27282e;
+  color: #8a8b8e;
+box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, .3);
+}
+.dark .show-content {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+.dark .radio-text {
+  color: #8a8b8e;
+}
+
+.dark .nav_menu {
+  background: #27282e;
+}
+
+.dark .questions {
+  background: #1e1f25;
+}
+.dark .choice {
+  background: #27282e;
+  border:  2px solid #27282e;
+}

@@ -1,0 +1,18 @@
+<!--pages/scores/scores.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+<view class="scores">
+  <view class="title">本周成绩</view>
+  <canvas canvas-id="columnCanvas" style='width:{{canvasWidth}}px; height:{{canvasHeight}}px' disable-scroll="true" class="canvas"></canvas>
+  <view class="history">
+    <view class="title">历史成绩</view>
+    <view class="box">
+      <view wx:if="{{scoresList.length == 0}}" style="padding:20rpx">暂无成绩，快去考试吧~</view>
+      <view class="score_info" wx:for="{{scoresList}}">
+        <view class="score" style="color:{{item.score >= 90? (item.score >= 120 ? (item.score == 150 ? '#42b983;' : '#1b8cfa') :'#ffca28') : '#f56c6c' }}">{{item.score + '分'}}</view>
+        <view class="consume">{{item.consume}}</view>
+        <view class="date">{{item.date}}</view>
+        <view class="grade" style="color:{{item.score >= 90? (item.score >= 120 ? (item.score == 150 ? '#42b983;' : '#1b8cfa') :'#ffca28') : '#f56c6c' }}">{{item.score >= 90 ? (item.score >= 120 ? (item.score == 150 ? '优秀' : '良好') :'及格') : '不及格' }}</view>
+      </view>
+    </view>
+  </view>
+</view></view>

@@ -1,0 +1,52 @@
+{
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/collect/collect",
+        "text": "收藏"
+      },
+      {
+        "pagePath": "pages/rank/rank",
+        "text": "排行榜"
+      },
+      {
+        "pagePath": "pages/set/set",
+        "text": "我的"
+      }
+    ]
+  },
+  "pages": [
+    "pages/index/index",
+    "pages/question/question",
+    "pages/collect/collect",
+    "pages/set/set",
+    "pages/exam/exam",
+    "pages/correct/correct",
+    "pages/rank/rank",
+    "pages/scores/scores",
+    "pages/login/login",
+    "pages/special/special",
+    "pages/exampage/exampage",
+    "pages/upload/upload",
+    "pages/help/help",
+    "pages/about/about",
+    "pages/message/message"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#42b983",
+    "navigationBarTitleText": "计算机计考",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index"
+  }
+}

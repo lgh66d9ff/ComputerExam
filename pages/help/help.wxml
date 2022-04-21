@@ -1,0 +1,44 @@
+<!--pages/help/help.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="help-main">
+    <view class="help-box">
+      <view class="title">帮助</view>
+      <view class="help">
+        <view class="help_child">
+          <view>Q:小程序有哪些功能？</view>
+          <view>A:小程序的功能主要分为专项练习、顺序练习、随机练习、模拟考试、错题集、排行榜和收藏七大功能</view>
+          <view>1.专项练习：用户根据对应的章节进行强化训练；</view>
+          <view>2.顺序练习:所有用户默认从题库第一题开始刷题，顺序练习和模拟练习都可以进行答题模式和背题模式的切换，左右滑动即可切换题目；</view>
+          <view>3.随机练习:每次进入默认为上次顺序练习题，左右滑动即可切换题目；</view>
+          <view>4.模拟考试:考试时间为30分钟，题目数量为50道，左右滑动即可切换题目，题目从题库中随机读取，选择答案后无法更改，请认真答题；</view>
+          <view>5.错题集:该功能仅收录模拟考试中的错题，用户可以选择不同类别的错题进行统一强化训练，也可以选择今日错题或者全部错题进行答题；</view>
+          <view>6.排行榜:用户可以在排行榜中看到排名50的用户，名次按照用户分数和所耗时间来进行降序排名。如：两次考试分数相同，按照耗时最短进行排名；</view>
+          <view>7.收藏:用户收藏的题目都在该页面下，点击题目可以查看题目详情，滑动题目可以选择取消收藏，滑动底部加载题目；</view>
+          <!-- <view style="color: red; font-weight: bold;">8.讨论区:任何用户都可以在讨论区进行学习交流，禁止发布违规违法消息，一经发现直接拉入小黑屋；</view> -->
+        </view>
+        <view class="help_child">
+          <view>Q:为什么我使用不了功能？</view>
+          <view>A:无法使用功能分为两种情况。 1：用户未成为会员 2：用户使用天数到期；无法使用时会提醒用户暂无权限，请充值会员后再使用。</view>
+        </view>
+        <view class="help_child">
+          <view>Q:数据有些时候没刷新？</view>
+          <view>A:下拉刷新或者退出重新登录即可 </view>
+        </view>
+        <view class="help_child">
+          <view>Q:小程序使用问题？</view>
+          <view>A:如有问题，请联系开发者进行修正。qq群：974196288</view>
+        </view>
+        <view class="help_child">
+          <view>Q:小程序使用交流群</view>
+          <view style="color: #42b983;font-weight:bold;">A:qq群：974196288(加群可试用一天)</view>
+        </view>
+        <view class="help_child">
+          <view>Q:如何成为会员？</view>
+          <view style="user-select: text;">A:小程序提供季(￥50)、年(￥100)卡会员充值，具体请加qq群：974196288，充值前请先在小程序登录，
+            充值成功一天内开通，用户可以通过清除数据重新登录来查看是否开通成功。</view>
+          <view>会员时间计算方式：开通成功当天至到期时间。例如:2021-08-27开通月卡成功,过期时间应该为2021-09-27</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

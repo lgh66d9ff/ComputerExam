@@ -1,0 +1,14 @@
+.dark .upload {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .upload-box {
+  background: #27282e;
+}
+.dark .card {
+  background: #27282e !important;
+}
+.dark .titles {
+  color: #8a8b8e;
+}

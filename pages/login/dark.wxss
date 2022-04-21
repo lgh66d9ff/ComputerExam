@@ -1,0 +1,14 @@
+.dark .login {
+  height: 100vh;
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .login-btn {
+  background: #276d4d;
+}
+
+.dark .cancel {
+  background:  #27282e;
+  color: white;
+}

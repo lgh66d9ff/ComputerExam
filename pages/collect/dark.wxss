@@ -1,0 +1,14 @@
+
+.dark .collect {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .show-content {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .option {
+  background: #27282e;
+}

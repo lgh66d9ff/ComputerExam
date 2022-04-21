@@ -1,0 +1,5 @@
+
+.dark .scores {
+  background:  #1e1f25;
+  color: #8a8b8e;
+}

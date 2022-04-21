@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "l-card": "/miniprogram_npm/lin-ui/card/index"
+  },
+  "navigationBarTitleText": "专项练习"
+}

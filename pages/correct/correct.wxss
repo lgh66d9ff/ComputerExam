@@ -1,0 +1,35 @@
+/* pages/correct/correct.wxss */
+.correct{
+  width: 100%;
+  min-height: 100vh;
+}
+.wrong_desc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #42b983;
+  color: white;
+}
+.new_wrong, .total_wrong {
+  width: 50%;
+  margin: 30rpx;
+}
+.new_wrong view, .total_wrong view {
+  margin-top: 30rpx;
+}
+.vertical {
+  color: #eee;
+}
+.wrong_title {
+  font-size: 20pt;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.wrong_list {
+  padding: 30rpx;
+}
+.wrong_info {
+  padding-bottom: 50px;
+}
+@import './dark.wxss'

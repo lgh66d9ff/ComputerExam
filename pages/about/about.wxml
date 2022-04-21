@@ -1,0 +1,7 @@
+<!--pages/about/about.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+<view class="about">
+  <view class="title">关于小程序</view>
+  <view class="content"><text style="color:#42b983;">《计算机计考》</text>小程序旨在为计算机专业学生提供专业试题进行强化训练，加强学生对计算机的了解，提升考试通过率。</view>
+</view>
+</view>

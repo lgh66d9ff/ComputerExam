@@ -1,0 +1,56 @@
+<!--pages/exampage/exampage.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="exampage">
+    <view class="exam-info">
+      <view class="exam-relate">
+        <view class="relate-card">
+          <text>考试类型：</text>
+          <view>湖北省技能高考模拟考试</view>
+        </view>
+        <view class="relate-card">
+          <text>考试时间：</text>
+          <view>30分钟，50题</view>
+        </view>
+        <view class="relate-card">
+          <text>合格标准：</text>
+          <view>90分及格(150分满分)</view>
+        </view>
+        <view class="relate-card cover">
+          <text>功能详解：全真模拟仅提供技能高考重点知识模块的题目，能够最大程度保证题目的完整性和正确性，技能高考章节知识以及阶段知识为公开数据，不保证题目重复性和正确性。
+
+          错题巩固收录用户之前的错题进行强化训练。
+          
+          专项答题供用户针对单一模块进行考试训练，查漏补缺。
+          </text>
+        </view>
+        <view class="relate-card cover">
+          <text>计分规则：模拟考试下不能修改答案,每错1题扣3分,时间超时自动交卷。左右滑动切换题目,答题界面可以点击右下角图标任意跳转题目。</text>
+        </view>
+      </view>
+      <view class="exam-card" bindtap="navigoExam" data-page='1'>
+        <view class="info">
+          <text>全真模拟</text>
+          <view>从题库中随机抽取50道题目</view>
+        </view>
+        <image src="../../img/monikaoshi.png"></image>
+      </view>
+      <view class="exam-card" bindtap="navigoExam" data-page='2'>
+        <view class="info">
+          <text>错题巩固</text>
+          <view>从错题集中随机抽取50道题目</view>
+        </view>
+        <image src="../../img/zanwucuoti.png"></image>
+      </view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange"  value="{{index}}" range="{{array}}">
+        <view class="exam-card">
+          <view class="info">
+            <text>专项答题</text>
+            <view>从指定模块随机抽取50道题目</view>
+          </view>
+          <image src="../../img/zhuanxiangdati.png"></image>
+        </view>
+      </picker>
+      <!-- <ad unit-id="adunit-854ee07d942ae698"></ad> -->
+    </view>
+  </view>
+</view>

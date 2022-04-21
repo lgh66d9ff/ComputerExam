@@ -1,0 +1,183 @@
+<!--index.wxml-->
+<wxs module="m1">
+  var formatTime = function (vip) {
+    if (!vip) return null;
+    var expired = vip / 1000
+    var now = getDate().getTime() / 1000;
+    var result = (expired - now) / 86400;
+    return result > 0 ? parseInt(result) : null;
+  }
+
+  var isLogin = function (res) {
+    return JSON.stringify(res) == '{}';
+  }
+  module.exports = { formatTime: formatTime, isLogin: isLogin }
+</wxs>
+<l-tab-bar bg-color="{{isDark ? '#27282e' : 'white'}}" list="{{list}}" />
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="container">
+    <swiper class="swiper-card" indicator-dots="true" indicator-color="{{isDark ? '#27282e' : 'white'}}" indicator-active-color="#42b983" autoplay="true" interval="3000" circular="true" style="width: 100%;height: 200px;">
+      <swiper-item bindtap="bindGoMessage">
+        <image class="swiper-img" src="/img/banner.png"></image>
+      </swiper-item>
+      <swiper-item bindtap="bindGoMessage">
+        <image class="swiper-img" src="/img/banner.png"></image>
+      </swiper-item>
+      <swiper-item bindtap="bindGoMessage">
+        <image class="swiper-img" src="/img/banner.png"></image>
+      </swiper-item>
+    </swiper>
+    <view class="model">
+      <view class="model-box">
+        <view class="model-item" bindtap="getQuestion" data-pageid="1">
+          <image class="model-img" src="/img/zhuanxiang.png"></image>
+          <view class="model-name">专项练习</view>
+        </view>
+        <view class="model-item" bindtap="getQuestion" data-pageid="2">
+          <image class="model-img" src="/img/kaoshi.png"></image>
+          <view class="model-name">模拟考试</view>
+        </view>
+        <view class="model-item" bindtap="getQuestion" data-pageid="3">
+          <image class="model-img" src="/img/shunxulianxi.png"></image>
+          <view class="model-name">顺序练习</view>
+        </view>
+        <view class="model-item" bindtap="getQuestion" data-pageid="4">
+          <image class="model-img" src="/img/suijilianxi.png"></image>
+          <view class="model-name">随机练习</view>
+        </view>
+        <view class="model-item" bindtap="getQuestion" data-pageid="5">
+          <image class="model-img" src="/img/exam-mistakes.png"></image>
+          <view class="model-name">错题集</view>
+        </view>
+      </view>
+    </view>
+    <view class="learn-situation">
+      <view class="learn-title">学习情况</view>
+      <view class="learn-box">
+        <view class="learn-item" wx:for="{{learnList}}">
+          <view class="learn-user">
+            <image class="learn-user-avatar" src="{{item.nickavator}}"></image>
+            <view class="learn-user-info">
+              <text>{{item.nickname}}</text>
+              <text class="learn-time">{{item.time}}</text>
+            </view>
+          </view>
+          <view class="learn-info">
+            <view class="learn-content"> <text class="learn-tag" >考试成绩:<text class="score">{{item.score}}分</text></text></view>
+            <view class="learn-content"><text class="learn-tag" >所用时长:<text class="time">{{item.consume}}</text></text></view>
+          </view>
+          <text class="tag">{{item.type}}</text>
+        </view>
+        <image wx:if="{{!learnList.length}}" src="/img/zanwu.png" style="width:200px;height:200px"></image>
+        <text wx:if="{{!learnList.length}}">暂无数据哦~</text>
+      </view>
+    </view>
+    <!-- <view class="practice">
+      <view class="content" bindtap="getQuestion" data-pageid="1">
+        <image src="/img/zhuanxiang.png"></image>
+        <text>专项练习</text>
+      </view>
+      <view class="content" bindtap="getQuestion" data-pageid="2">
+        <image src="/img/kaoshi.png"></image>
+        <text>模拟考试</text>
+      </view>
+    </view>
+    <view class="menu">
+      <view class="content" bindtap="getQuestion" data-pageid="3">
+        <image src="/img/shunxulianxi.png"></image>
+        <text>顺序练习</text>
+      </view>
+      <view class="content" bindtap="getQuestion" data-pageid="4">
+        <image src="/img/suijilianxi.png"></image>
+        <text>随机练习</text>
+      </view>
+
+      <view class="content" bindtap="getQuestion" data-pageid="5">
+        <image src="/img/exam-mistakes.png"></image>
+        <text>错题集</text>
+      </view>
+    </view> -->
+    <!-- <view class="main">
+        <view class="content" bindtap="getQuestion" data-pageid="6">
+          <image src="/img/paihangbang--copy.png"></image>
+          <text>排行榜</text>
+        </view>
+      </view> -->
+
+    <!-- <view class="bg" style="height: {{scrollViewHeight*0.3}}px"></view>
+    <view class="box">
+      <view class="userinfo">
+        <block>
+          <image wx:if="{{!hasUserInfo}}" class="userinfo-avatar" style="border:none" src="../../img/user.jpg"
+            mode="cover" bindtap="toLogin"></image>
+          <image wx:else class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <view class="user-name">
+            <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+            <view wx:if="{{!m1.isLogin(userInfo)}}" class="user_type">身份: <text>{{m1.formatTime(userInfo.vip) != null ?
+                '会员' : '游客'}}</text></view>
+            <text wx:if="{{m1.isLogin(userInfo)}}">点击头像即可登录</text>
+            <text wx:if="{{!m1.isLogin(userInfo) && m1.formatTime(userInfo.vip) == null}}"
+              style="font-size: 10pt">使用手册请转移到"我的"-"帮助"</text>
+            <view class="expires_time" wx:if="{{m1.formatTime(userInfo.vip) != null}}">
+              到期时间:{{m1.formatTime(userInfo.vip)}}天后</view>
+          </view>
+
+
+        </block>
+      </view>
+      <view class="header">
+        <view class="score-title">
+          <image class="scoreicon" src="/img/chengji.png" lazy-load="{{true}}"></image>我的成绩
+        </view>
+        <view class="score-info">
+          <view class="left-data">
+            <view>刷题数</view>
+            <view>{{userInfo.memory ? userInfo.memory : 0}}</view>
+            <view>考题数</view>
+            <view>{{userInfo.exam.exam_count ? userInfo.exam.exam_count : 0}}</view>
+          </view>
+          <view class="right-data">
+            <view>考试次数</view>
+            <view>{{userInfo.exam.exam_num ? userInfo.exam.exam_num : 0}}</view>
+            <view>正确率</view>
+            <view>{{(userInfo.exam.rate ? userInfo.exam.rate : 0) + '%'}}</view>
+          </view>
+        </view>
+
+      </view>
+
+      <view class="practice">
+        <view class="content" bindtap="getQuestion" data-pageid="1">
+          <image src="/img/zhuanxiang.png"></image>
+          <text>专项练习</text>
+        </view>
+        <view class="content" bindtap="getQuestion" data-pageid="2">
+          <image src="/img/kaoshi.png"></image>
+          <text>模拟考试</text>
+        </view>
+      </view>
+      <view class="menu">
+        <view class="content" bindtap="getQuestion" data-pageid="3">
+          <image src="/img/shunxulianxi.png"></image>
+          <text>顺序练习</text>
+        </view>
+        <view class="content" bindtap="getQuestion" data-pageid="4">
+          <image src="/img/suijilianxi.png"></image>
+          <text>随机练习</text>
+        </view>
+
+        <view class="content" bindtap="getQuestion" data-pageid="5">
+          <image src="/img/exam-mistakes.png"></image>
+          <text>错题集</text>
+        </view>
+      </view>
+      <view class="main">
+        <view class="content" bindtap="getQuestion" data-pageid="6">
+          <image src="/img/paihangbang--copy.png"></image>
+          <text>排行榜</text>
+        </view>
+      </view>
+    </view> -->
+
+  </view>
+</view>

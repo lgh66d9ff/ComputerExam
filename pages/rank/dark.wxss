@@ -1,0 +1,23 @@
+.dark .rank {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .rank_pre {
+  color: #8a8b8e;
+}
+
+.dark .rank_other {
+  background: #27282e;
+  color: #8a8b8e;
+}
+
+.dark .self {
+  background: #1e1f25;
+  background-image: none;
+}
+
+.dark .mode-two, .dark .mode-one {
+  background: #42b983 !important;
+  color: white;
+}

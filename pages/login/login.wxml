@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="login">
+    <view class="login-box">
+      <view class="title">
+        <image src="../../img/manfen-.png" lazy-load="{{true}}"></image>
+        <view>计算机计考</view>
+      </view>
+      <view class="info">
+        为了给您提供更好的服务，《计算机计考》申请获取你的信息，用户快捷登录，请点击【允许】
+      </view>
+      <block wx:if="{{!hasUserInfo}}">
+        <button class="btn login-btn" wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+        <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+      </block>
+      <button class="btn cancel" bindtap="cancel"> 取消 </button>
+    </view>
+
+  </view>
+</view>

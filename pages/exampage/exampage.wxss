@@ -1,0 +1,52 @@
+/* pages/exampage/exampage.wxss */
+.exampage {
+  min-height: 100vh;
+  background: #f6f8fd;
+}
+.exam-relate {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  background: white;
+  padding: 10px;
+}
+.relate-card {
+  margin: 10px;
+  display: flex;
+}
+.exam-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  border-radius: 15px;
+}
+.exam-card:nth-child(2){
+  background: linear-gradient(to right, #03A9F4, #8ddaff);
+}
+.exam-card:nth-child(3){
+  background: linear-gradient(to right, #ff9a44, #f5c8a2);
+}
+picker .exam-card{
+  background: linear-gradient(to right, #eb5f58, #ffcecb);
+}
+.exam-card text {
+  font-size: 18px;
+}
+.info view {
+  font-size: 12px;
+}
+.info {
+  width: 70%;
+}
+.exam-card image {
+  width: 50px;
+  height: 50px;
+}
+.cover {
+  color: #8a8b8e;
+  font-size: 12px;
+}
+@import './dark.wxss'

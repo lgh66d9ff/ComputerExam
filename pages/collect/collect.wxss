@@ -1,0 +1,69 @@
+/* pages/collect/collect.wxss */
+.collect {
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+.search-bar {
+  margin-top: 10px;
+}
+.tab-content {
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  padding-bottom: 150px;
+}
+
+.l-tabpanel-content {
+  margin: 10rpx !important;
+}
+
+.left,
+.right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+}
+
+.right {
+  background: #f64f6a;
+  color: white;
+}
+
+.left {
+  justify-content: left;
+}
+
+
+.left-title {
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.show-content {
+  background-color: #ececec;
+  border-radius: 15px 15px;
+  padding: 15px;
+}
+
+.quiz-title {
+  font-size: 15pt;
+    font-weight: bold;
+  margin-bottom: 50rpx;
+}
+
+.option {
+  background: white;
+  padding: 20rpx;
+  border-radius: 50rpx 50rpx;
+  height: auto;
+  margin-bottom: 20rpx;
+}
+
+.desc {
+  font-weight: bold;
+}
+@import './dark.wxss'

@@ -1,0 +1,47 @@
+/* pages/scores/scores.wxss */
+.scores {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 15pt;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.score_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.score_info view {
+  padding: 20rpx;
+}
+
+.score {
+  width: 20%;
+  text-align: left !important;
+}
+
+.consume {
+  width: 30%;
+  color: #7e7b7b;
+  text-align: center;
+}
+
+.date {
+  width: 30%;
+  color: #7e7b7b;
+  text-align: center;
+}
+
+.grade {
+  width: 20%;
+  text-align: center;
+}
+
+@import './dark.wxss'

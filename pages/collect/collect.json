@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index",
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-slide-view": "/miniprogram_npm/lin-ui/slide-view/index"
+  },
+  "navigationBarTitleText": "我的收藏",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance":200,
+  "backgroundTextStyle": "dark"
+}

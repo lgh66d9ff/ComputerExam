@@ -1,0 +1,154 @@
+<!--pages/exam/exam.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="exam" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <l-message content="{{content}}" />
+    <view class="timeInterval">
+      <l-icon l-class="icons" name="time" size="30"></l-icon><text
+        style="font-size:30rpx;margin-left:10rpx;">{{total}}</text>
+    </view>
+    <view class="title">
+      <view class="title-left">
+        <text class="num">单选题</text>
+        <text class="tag" wx:if="{{quizList[currentIndex].chapter}}">{{quizList[currentIndex].chapter}}</text>
+      </view>
+      <view class="title-right">
+        <text class="feedback" bindtap="showFeedBack">报错</text>
+      </view>
+    </view>
+    <view class="process">
+      <l-progress active-color="#42b983" background-color="{{isDark ? '#8a8b8d' : '#EBEBEB'}}" percent="{{persent}}"
+        stroke-width='20' border-radius='15' l-active-class="transi"></l-progress>
+    </view>
+
+    <view class="exam_question" wx:for="{{quizList}}" wx:if="{{index == currentIndex}}" wx:key="index">
+      <view class="exam_title">{{index+1 + '.'}}{{item.question}}</view>
+
+      <view class="exam_option">
+        <view
+          class="{{myOption[index]['isSelect'] ?  (myOption[index]['isSelect'] == 'A' && myOption[index]['isSelect'] == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] == 'A' && myOption[index]['isSelect'] != item.answer ? 'exam_wrong option' : (myOption[index]['isSelect'] != 'A' && 'A' == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] != 'A' && 'A' != item.answer ? 'option onlyRead' : 'option')))) :'option'}}"
+          catchtap="addOption" data-option="{{[index,'A']}}"><text class="myoption">A</text>
+          <view style="text-align: left;font-size:30rpx">{{item.A}}</view>
+        </view>
+        <view
+          class="{{myOption[index]['isSelect'] ?  (myOption[index]['isSelect'] == 'B' && myOption[index]['isSelect'] == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] == 'B' && myOption[index]['isSelect'] != item.answer ? 'exam_wrong option' : (myOption[index]['isSelect'] != 'B' && 'B' == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] != 'B' && 'B' != item.answer ? 'option onlyRead' : 'option')))) :'option'}}"
+          catchtap="addOption" data-option="{{[index,'B']}}"><text class="myoption">B</text>
+          <view style="text-align: left;font-size:30rpx">{{item.B}}</view>
+        </view>
+        <view
+          class="{{myOption[index]['isSelect'] ?  (myOption[index]['isSelect'] == 'C' && myOption[index]['isSelect'] == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] == 'C' && myOption[index]['isSelect'] != item.answer ? 'exam_wrong option' : (myOption[index]['isSelect'] != 'C' && 'C' == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] != 'C' && 'C' != item.answer ? 'option onlyRead' : 'option')))) : 'option'}}"
+          catchtap="addOption" data-option="{{[index,'C']}}"><text class="myoption">C</text>
+          <view style="text-align: left;font-size:30rpx">{{item.C}}</view>
+        </view>
+        <view
+          class="{{myOption[index]['isSelect'] ?  (myOption[index]['isSelect'] == 'D' && myOption[index]['isSelect'] == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] == 'D' && myOption[index]['isSelect'] != item.answer ? 'exam_wrong option' : (myOption[index]['isSelect'] != 'D' && 'D' == item.answer ? 'exam_right option' : (myOption[index]['isSelect'] != 'D' && 'D' != item.answer ? 'option onlyRead' : 'option')))) :'option'}}"
+          catchtap="addOption" data-option="{{[index,'D']}}"><text class="myoption">D</text>
+          <view style="text-align: left;font-size:30rpx">{{item.D}}</view>
+        </view>
+      </view>
+
+      <view class="exam_desc" wx:if="{{myOption[index] ? myOption[index]['type'] == false : false}}">{{item.analysis ?
+        item.analysis : "解析：暂无解析"}}</view>
+
+
+    </view>
+    <view class="nav_menu">
+      <view class="left">
+        <l-icon name="like" color="" size="40" bindtap="collectQues"
+          color="{{quizList[currentIndex].isCollect ? '#F4516C' : ''}}" data-id="{{currentIndex}}"></l-icon>
+        <view class="post" style="{{isCommit ? 'pointer-events: none' : ''}}" catchtap="Settlement">交卷</view>
+      </view>
+      <view class="right">
+        <view class="nums">
+          <image class="img" src="/img/dui.png"></image>{{rightNum}}
+        </view>
+        <view class="nums">
+          <image class="img" src="/img/cuo.png"></image>{{wrongNum}}
+        </view>
+        <view class="nums" bindtap="showInfo">
+          <image class="menus" src="/img/gongneng.png"></image>{{currentIndex+1}}<text
+            style="color:grey;">/{{quizList.length}}</text>
+        </view>
+      </view>
+    </view>
+    <l-popup show="{{isFeedback}}" bind:lintap="hidePopup" data-status="isFeedback">
+      <view class="show-content feed">
+        <view class="feed-title">{{currentIndex+1}}.{{quizList[currentIndex].question}}</view>
+        <view class="tip">请选择正确答案并提交反馈</view>
+        <view class="danger">注意：请不要恶意提交，不然会扣天数的哦</view>
+        <view class="options">
+          <l-radio-group bind:linchange="setFeedItem">
+            <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="A">A.{{quizList[currentIndex].A}}</l-radio>
+            <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="B">B.{{quizList[currentIndex].B}}</l-radio>
+            <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="C">C.{{quizList[currentIndex].C}}</l-radio>
+            <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="D">D.{{quizList[currentIndex].D}}</l-radio>
+          </l-radio-group>
+        </view>
+        <view class="commit"><button class="feed-btn" bindtap="putFeedback">确认提交</button></view>
+      </view>
+    </l-popup>
+    <l-popup show="{{isShow}}" bind:lintap="continueAnswer">
+      <view class="show-content">
+        <view class="grade_tip"
+          style="{{score >= 90 ? 'font-size: 50rpx;color:#42b983;' : 'font-size: 50rpx;color:#df5256;'}}">{{ score >=
+          90
+          ? '考试合格' : '考试不合格'}}</view>
+        <view class="result_time">剩余时间 {{total}}</view>
+        <image class="exam_img" src="{{score < 90 ? '/img/xinsui.png' : '/img/kaixincopy.png' }}"></image>
+        <view class="result_info">
+          <view class="info_child">
+            <text style="{{notNum ? 'color:#df5256' : '' }}">{{notNum}}</text>
+            <view>未答题数</view>
+          </view>
+          <view class="info_child">
+            <text style="{{errorNum ? 'color:#df5256' : '' }}">{{errorNum}}</text>
+            <view>错题数</view>
+          </view>
+          <view class="info_child">
+            <text style="{{score >= 90 ? 'color:#42b983' : 'color:#df5256'}}">{{score}}</text>
+            <view>考试得分</view>
+          </view>
+        </view>
+        <view class="btn_list">
+          <l-button l-class="btn_left" bg-color="#1b8cfa" l-label-class="btn_color" shape="semicircle"
+            catchtap="continueAnswer">继续答题</l-button>
+          <l-button l-class="btn_right" type="success" shape="semicircle" bindtap="checkScore"
+            disabled="{{globalData.isRequest}}">现在交卷</l-button>
+        </view>
+      </view>
+
+    </l-popup>
+
+    <l-popup show="{{isInfo}}" content-align="bottom" bind:lintap="hidePopup" data-status="isInfo">
+      <view class="questions">
+        <view class="info-title">
+          <view class="left">
+            <l-icon name="like" color="" size="40" bindtap="collectQues"
+              color="{{quizList[currentIndex].isCollect ? '#F4516C' : ''}}" data-id="{{currentIndex}}"></l-icon>
+            <view class="post" style="{{isCommit ? 'pointer-events: none' : ''}}" catchtap="Settlement">交卷</view>
+          </view>
+          <view class="right">
+            <view class="nums">
+              <image class="img" src="/img/dui.png"></image>{{rightNum}}
+            </view>
+            <view class="nums">
+              <image class="img" src="/img/cuo.png"></image>{{wrongNum}}
+            </view>
+            <view class="nums" bindtap="showInfo">
+              <image class="menus" src="/img/gongneng.png"></image>{{currentIndex+1}}<text
+                style="color:grey;">/{{quizList.length}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="info">
+          <scroll-view style="height: {{scrollViewHeight*0.5}}px" scroll-y="true">
+          <block wx:for="{{quizList}}">
+            <text class="choice"
+              style="{{myOption[index] ? (myOption[index]['type'] ? 'border: 4rpx solid #1b8cfa; background: #1b8cfa;color:white;'  : 'border: 4rpx solid #f56c6c;background:#f56c6c;color:white;' ) :(index == currentIndex ? 'border:4rpx solid #1b8cfa;color:#1b8cfa;' : '' )}}"
+              bindtap="navigoQuestion" data-index='{{index}}'>{{index+1}}</text>
+          </block>
+          </scroll-view>
+        </view>
+      </view>
+    </l-popup>
+  </view>
+</view>

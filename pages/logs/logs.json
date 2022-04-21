@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "查看启动日志",
+  "usingComponents": {
+    "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index"
+  }
+}

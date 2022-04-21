@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "l-progress": "/miniprogram_npm/lin-ui/progress/index",
+    "l-card": "/miniprogram_npm/lin-ui/card/index"
+  },
+  "navigationBarTitleText": "文件上传"
+}

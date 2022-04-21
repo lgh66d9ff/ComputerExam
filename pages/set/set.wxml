@@ -1,0 +1,124 @@
+<!--pages/set/set.wxml-->
+<wxs module="m1">
+  var formatTime = function (vip) {
+    if (!vip) return null;
+    var expired = vip / 1000
+    var now = getDate().getTime() / 1000;
+    var result = (expired - now) / 86400;
+    return result > 0 ? parseInt(result) : null;
+  }
+
+  var isLogin = function (res) {
+    return JSON.stringify(res) == '{}';
+  }
+
+  module.exports = { formatTime: formatTime, isLogin: isLogin }
+</wxs>
+<l-tab-bar bg-color="{{isDark ? '#27282e' : 'white'}}" list="{{list}}" />
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="set">
+    <view class="header">
+      <view class="header-clear">
+      </view>
+      <view class="userinfo">
+        <block>
+          <image wx:if="{{!hasUserInfo}}" class="userinfo-avatar" style="border:none" src="../../img/user.jpg" mode="cover" bindtap="toLogin"></image>
+          <image wx:else class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <view class="my-set">
+
+            <text class="expires_time" wx:if="{{m1.formatTime(userInfo.vip) != null}}">到期时间:{{m1.formatTime(userInfo.vip)}}天后</text>
+            <text class="expires_time" wx:else="">你好，游客</text>
+            <text wx:if="{{!m1.isLogin(userInfo) && m1.formatTime(userInfo.vip) == null}}" style="font-size: 10pt">使用手册请点击下方帮助</text>
+            <view class="userinfo-nickname"><text>{{userInfo.nickName}}</text>
+              <image wx:if="{{m1.formatTime(userInfo.vip) != null}}" class="vip" src="/img/huiyuan_5.png"></image>
+            </view>
+            <text wx:if="{{m1.isLogin(userInfo)}}">点击头像即可登录</text>
+
+          </view>
+          <view class="user-data">
+            <view class="data-item">
+              <text class="data-num">{{userInfo.memory ? userInfo.memory : 0}}</text>
+              <text class="data-name">刷题数</text>
+            </view>
+            <view class="data-item">
+              <text class="data-num">{{userInfo.exam.exam_num ? userInfo.exam.exam_num : 0}}</text>
+              <text class="data-name">考试次数</text>
+            </view>
+            <view class="data-item">
+              <text class="data-num">{{userInfo.exam.exam_count ? userInfo.exam.exam_count : 0}}</text>
+              <text class="data-name">考题数</text>
+            </view>
+            <view class="data-item">
+              <text class="data-num">{{(userInfo.exam.rate ? userInfo.exam.rate : 0) + '%'}}</text>
+              <text class="data-name">正确率</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="model">
+    <view class="model-title">我的排行</view>
+      <view class="model-box model-rank">
+        <view class="model-item">
+          <text class="rank-num">{{userInfo.rank.now || '未上榜'}}</text>
+          <view class="model-name">今日排行</view>
+        </view>
+        <view class="model-item">
+          <text class="rank-num">{{userInfo.rank.total || '未上榜'}}</text>
+          <view class="model-name">总排行</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="model">
+      <view class="model-box">
+        <view class="model-item" bindtap="navigo" data-id="1" wx:if="{{!m1.isLogin(userInfo)}}">
+          <image class="model-img" src="/img/chengjifenxi.png"></image>
+          <view class="model-name">学习记录</view>
+        </view>
+        <view class="model-item" bindtap="navigo" data-id="2" wx:if="{{!m1.isLogin(userInfo)}}">
+          <image class="model-img" src="/img/exceldaoru.png"></image>
+          <view class="model-name">题库导入</view>
+        </view>
+        <view class="model-item" bindtap="openDark">
+          <image class="model-img" src="{{isDark ? '/img/taiyang.png' : '/img/qing-yewan.png'}}"></image>
+          <view class="model-name">{{isDark ? '白天模式' : '夜晚模式'}}</view>
+        </view>
+        <view class="model-item">
+          <image class="model-img" src="/img/kaifazhong.png"></image>
+          <view class="model-name">敬请期待</view>
+        </view>
+      </view>
+    </view>
+    <view class="model">
+      <view class="model-title">更多功能</view>
+      <view class="model-box">
+        <view class="model-item" bindtap="onHelp">
+          <image class="model-img" src="/img/bangzhu.png"></image>
+          <view class="model-name">帮助</view>
+        </view>
+        <view class="model-item" bindtap="onAbout">
+          <image class="model-img" src="/img/guanyu4-copy.png"></image>
+          <view class="model-name">关于</view>
+        </view>
+        <view class="model-item" bindtap="clearStorage" wx:if="{{!m1.isLogin(userInfo)}}">
+          <image class="model-img" src="/img/tuichu.png"></image>
+          <view class="model-name">退出登录</view>
+        </view>
+      </view>
+    </view>
+    <l-popup show="{{isShow}}" content-align="center">
+      <view class="show-content">
+        <view class="input">
+          <l-input showRow="{{false}}" value="{{account}}" bind:lininput="onAccount" clear="{{true}}" required="{{true}}" label="账号" placeholder="请输入账号" />
+          <l-input showRow="{{false}}" value="{{password}}" bind:lininput="onPassword" clear="{{true}}" required="{{true}}" label="密码" placeholder="请输入密码" type="password" />
+        </view>
+        <view class="btn">
+          <l-button type="default" bindtap="payVip" disabled="{{globalData.isRequest}}">绑定账号</l-button>
+        </view>
+
+      </view>
+    </l-popup>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+<!--pages/upload/upload.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="upload">
+    <view class="upload-box">
+      <view class="upload-top">
+        <image src="../../img/wenjian.png"></image>
+        <view class="info">
+          <text>{{filename}}</text>
+          <l-progress active-color="#42b983" background-color="{{isDark ? '#8a8b8d' : '#EBEBEB'}}" percent="{{persent}}"
+            stroke-width='20' border-radius='15' l-active-class="transi"></l-progress>
+        </view>
+        <view class="percent">{{persent}}%</view>
+      </view>
+      <view class="help">
+        <l-card l-class="card" l-title-class="titles" type="cover" image="/img/format.jpg" title="导入格式说明">
+          <view class="content">
+            excel文件，第一行为标题，分别为question、A、B、C、D、answer、chapter；第二行开始后面的均为题目数据，标题含义为(题目，A选项，B选项，C选项，D选项，答案，章节(自己命名))
+          </view>
+        </l-card>
+
+        <text>注意事项：仅支持上传xls、xlsx后缀名的电子表格，为了降低服务器压力每次仅支持上传50道题，上传的题目仅供自己使用，其他用户无法答题。</text>
+        <view style="color: #42b983;">上传方式：将需要上传的题目按指定格式保存，随后发给任意一人或者微信文件助手，再回到此页面进行文件上传，寻找至刚刚发送的收件人，选择该文件即可上传。</view>
+        <view style="color: red;">请勿重复上传文件，无用文件，发现的话扣除10天会员</view>
+      </view>
+
+    </view>
+
+    <button bindtap="upload">上传文件</button>
+  </view>
+</view>

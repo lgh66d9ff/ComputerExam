@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "l-button":"/miniprogram_npm/lin-ui/button/index",
+    "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index",
+    "l-card": "/miniprogram_npm/lin-ui/card/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-notice-bar": "/miniprogram_npm/lin-ui/notice-bar/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

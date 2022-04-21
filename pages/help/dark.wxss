@@ -1,0 +1,10 @@
+
+.dark .help-main {
+  background: #1e1f25;
+  color: #8a8b8e;
+  transition: all ease .3s;
+}
+.dark .help_child {
+  background: #27282e;
+  transition: all ease .3s;
+}

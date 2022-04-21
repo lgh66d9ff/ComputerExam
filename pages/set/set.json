@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index",
+    "l-avatar": "/miniprogram_npm/lin-ui/avatar/index",
+    "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index",
+    "l-input": "/miniprogram_npm/lin-ui/input/index",
+    "l-button": "/miniprogram_npm/lin-ui/button/index"
+  },
+  "navigationBarTitleText": "我的",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

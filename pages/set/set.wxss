@@ -1,0 +1,113 @@
+/* pages/set/set.wxss */
+.set{
+  min-height: 130vh;
+  background: #f6f7fc;
+}
+.header {
+  height: 200px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+.header-clear {
+  width: 100%;
+  background: #42b983;
+  height: 180px;
+}
+.my-grade {
+  color: white;
+  text-align: center;
+}
+.my-title {
+  text-align: center;
+}
+.menu {
+  padding: 30rpx;
+}
+.userinfo {
+  position: absolute;
+  top: 50px;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4rpx 20rpx 0 rgba(165, 165, 165, 0.5);
+  background: white;
+  align-items: center;
+}
+.my-set {
+  /* margin-top: 50px; */
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.userinfo-avatar {
+  position: absolute;
+  top: -40px;
+  left: 20px;
+  /* overflow: hidden; */
+  width: 64px;
+  height: 64px;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.expires_time {
+  color: #afafaf;
+  font-size: 14px;
+  margin-top: 0px;
+  text-align: right;
+}
+.userinfo-nickname {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 15pt;
+}
+.userinfo-nickname text {
+  max-width: 80%;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.vip {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+}
+.pay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-data {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.data-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.data-num {
+  font-size: 20px;
+  color: #42b983;
+}
+.data-name {
+  font-size: 14px;
+  color: rgb(175, 175, 175);
+}
+.model-rank .model-item{
+  width: 49%;
+}
+.rank-num {
+  color: #1b8cfa;
+  font-size: 25px;
+}
+.model-rank .model-item:nth-child(1) {
+  border-right: 1px solid #1b8cfa;
+}
+@import './dark.wxss'

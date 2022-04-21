@@ -1,0 +1,26 @@
+.dark .special {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .left {
+  background: #27282e;
+}
+
+.dark .left .menu {
+  background: #1e1f25;
+}
+
+.dark .radio-text {
+  color: #8a8b8e;
+}
+
+.dark .card-css {
+  margin-bottom: 5px;
+  background: #27282e !important;
+  box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, .3);
+}
+
+.dark .content {
+  border: 1px solid #8a8b8e;
+}

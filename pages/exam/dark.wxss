@@ -1,0 +1,43 @@
+.dark .exam {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+
+.dark .option {
+  background: #27282e;
+  color: #8a8b8e;
+  box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, .3);
+}
+
+.dark .myoption {
+  border: none;
+  background: #1e1f25;
+}
+.dark .show-content {
+  background: #1e1f25;
+  color: #8a8b8e;
+}
+.dark .radio-text {
+  color: #8a8b8e;
+}
+
+.dark .choice {
+  background: #27282e;
+  border:  2px solid #27282e;
+}
+
+.dark .background {
+  background-color: #27282e;
+}
+
+.dark .menus {
+  color: #8a8b8e;
+}
+
+.dark .nav_menu {
+  background: #1e1f25;
+}
+
+.dark .questions {
+  background: #1e1f25;
+}

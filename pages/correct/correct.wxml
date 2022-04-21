@@ -1,0 +1,33 @@
+<!--pages/correct/correct.wxml-->
+<view class="{{isDark ? 'dark' : ''}}">
+<view class="correct">
+  <view class="wrong_desc">
+    <view class="new_wrong" bindtap="newWrong">
+      <text>{{today.length}}</text>
+      <view>今日错题</view>
+    </view>
+    <view class="vertical">|</view>
+    <view class="total_wrong" bindtap="allQuestion">
+      <text>{{wrong_len}}</text>
+      <view>全部错题</view>
+    </view>
+  </view>
+
+  <view class="wrong_info" >
+    <view class="wrong_title">错题详情</view>
+    <!-- <scroll-view style="height: {{scrollViewHeight*0.80}}px" scroll-y="true"> -->
+      <view class="wrong_list" wx:if="{{list.length}}">
+        <view wx:for="{{list}}">
+          <l-list l-content-class="{{isDark ? 'list-text' : ''}}" icon-size="40" title="{{item.name}}" icon="order" badge-count="{{item.length}}" badge-position="right"
+            bindtap="goPractice" data-name="{{item.name}}" wx:key="{{index}}" />
+        </view>
+      </view>
+      
+      <view wx:else style="text-align: center;">
+      暂无错题哦~
+    </view>
+    <!-- </scroll-view> -->
+    
+  </view>
+</view>
+</view>

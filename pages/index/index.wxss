@@ -1,0 +1,218 @@
+/**index.wxss**/
+.container .model {
+  width: 100%;
+  box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .5);
+}
+.swiper-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transform: translateY(0);
+}
+.swiper-img {
+  width: 100%;
+  height: 100%;
+}
+.practice, .menu, .main {
+  width: 100%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10rpx;
+  margin: 10rpx;
+  background: #fff;
+  border-radius: 40rpx 40rpx;
+  box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .5);
+  overflow: hidden;
+}
+.score-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.score-title {
+  font-size:17px;
+  display: flex;
+  align-items: center;
+}
+.scoreicon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+.box {
+  position: absolute;
+  top: 2%;
+  left: 7%;
+  right: 7%;
+  overflow: hidden;
+  
+}
+.left-data,
+.right-data {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.left-data view,.right-data view {
+ width: 100%;
+ text-align: center;
+ margin-top: 7px;
+}
+
+.left-data view:nth-child(2), .left-data view:nth-child(4),
+.right-data view:nth-child(2), .right-data view:nth-child(4)  {
+  color: #42b983;
+}
+ 
+.userinfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.user-name {
+  display: flex;
+  flex-direction: column;
+}
+.userinfo-nickname {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.userinfo-avatar {
+  overflow: hidden;
+  width: 140rpx;
+  height:140rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 6rpx solid white;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 888;
+}
+.menu view {
+  width: 33%;
+}
+
+.bg_radius {
+
+  background: #eee;
+
+}
+
+.content {
+  width: 30%;
+  background: #ffffff;
+  padding: 10rpx;
+  border-radius: 15rpx 15rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.practice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.practice .content {
+  width: 50%;
+}
+
+.practice .content:nth-child(1) {
+  margin-right: 10px;
+}
+.menu .content:nth-child(1) {
+  margin-right: 10px;
+}
+.menu .content:nth-child(2) {
+  margin-right: 10px;
+}
+
+.main .content {
+  width: 100%;
+}
+
+.content image {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.content text {
+  font-size: 10pt;
+  margin-top: 10rpx;
+}
+.learn-situation {
+  width: 100%;
+  min-height: 100vh;
+  margin-bottom: 120px;
+}
+.learn-title {
+  font-weight: bold;
+}
+.learn-box {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.learn-item {
+  width: 95%;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+.learn-user {
+  display: flex;
+  align-items: center;
+}
+.learn-user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.learn-user-info {
+  display: flex;
+  flex-direction: column;
+}
+.learn-time {
+  font-size: 12px;
+  color: rgb(185, 185, 185);
+}
+.learn-info {
+  font-size: 14px;
+}
+.tag {
+  font-size: 12px;
+  border-radius: 5px;
+  
+  margin-top: 10px;
+}
+.learn-content {
+  margin: 10px 0px;
+}
+.learn-tag {
+  border-radius: 5px;
+  padding: 3px;
+}
+@import './dark.wxss'

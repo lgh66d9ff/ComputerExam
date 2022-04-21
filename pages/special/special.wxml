@@ -1,0 +1,18 @@
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="special">
+    <scroll-view class="left" scroll-y="true" :style="min-height: 100vh">
+      <view class="menu">计算机</view>
+    </scroll-view>
+    <scroll-view class="right" scroll-y="true" :style="min-height: 100vh">
+      <l-card type="primary" plaintext="true" l-class="card-css" wx:for="{{list}}" wx:for-index="listindex">
+        <view class="content-header">{{item['name']}}</view>
+        <view class="card-content">
+          <text bindtap="navigoQuestion" class="content" wx:for="{{item['data']}}" wx:for-item="data"
+            wx:for-index="dataindex" data-id="{{data['id']}}" data-name="{{data['name']}}">{{data['name']}}
+          </text>
+        </view>
+      </l-card>
+    </scroll-view>
+
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<!--pages/collect/collect.wxml-->
+<l-tab-bar bg-color="{{isDark ? '#27282e' : 'white'}}" list="{{list}}" />
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="collect">
+    <l-search-bar l-container-class="search-bar" bg-color="#fff" bind:linchange="inputSearch" value="{{search}}" placeholder="搜索" show-cancel="{{false}}">
+      <view slot="after" style="margin-left: 10px;">
+        <l-button loading="{{btnLoading}}" type="success" size="mini" bindtap="findCollect">搜索</l-button>
+      </view>
+    </l-search-bar>
+    <l-popup show="{{isShow}}">
+      <view class="show-content" bindtouchstart="startTouch" bindtouchmove="moveTouch" bindtouchend="endTouch">
+        <scroll-view style="height: {{scrollViewHeight*0.7}}px" scroll-y="true" enable-back-to-top="true">
+          <text class="tag">{{questionInfo.chapter}}</text>
+          <view class="quiz-title">{{(questionInfo.index + 1) + '.' + questionInfo.question}}</view>
+          <view class="{{questionInfo.answer == 'A' ? 'option isRight' : 'option'}}">A.{{questionInfo.A}}</view>
+          <view class="{{questionInfo.answer == 'B' ? 'option isRight' : 'option'}}">B.{{questionInfo.B}}</view>
+          <view class="{{questionInfo.answer == 'C' ? 'option isRight' : 'option'}}">C.{{questionInfo.C}}</view>
+          <view class="{{questionInfo.answer == 'D' ? 'option isRight' : 'option'}}">D.{{questionInfo.D}}</view>
+          <view class="desc">解析:{{questionInfo.analysis ? questionInfo.analysis : '暂无解析'}}</view>
+          <view style="color:#6c8dff; text-align: center; font-weight:bold;" bindtap="setPuple"> 左右滑动查看题目(点击此处或者外阴影关闭弹窗)
+          </view>
+        </scroll-view>
+      </view>
+
+    </l-popup>
+
+    <view class="tab-content">
+      <view wx:if="{{!questionList.length}}" style="text-align:center;margin-top:100rpx;">暂无收藏~</view>
+      <!-- <scroll-view style="height: {{scrollViewHeight*0.90}}px" bindscrolltolower="loadMore" scroll-y="true"
+      enable-back-to-top="true"> -->
+      <l-slide-view auto-close="true" wx:for="{{questionList}}" height="140" width="750" slide-width="150">
+        <view slot="left" class="left" bindtap="showToast" data-item="{{item}}">
+          <view class='left-con'>
+            <view class='left-title' style="width:{{scrollViewWidth-20}}px">{{index+1}}.{{item.question}}</view>
+            <!-- <text class='left-time'>{{item.A + item.B + item.C + item.D}}</text> -->
+          </view>
+        </view>
+        <view slot="right" class="right" bindtap="cancelKill" data-id="{{index}}">
+          <view>取消收藏</view>
+        </view>
+      </l-slide-view>
+      <!-- </scroll-view> -->
+    </view>
+  </view>
+</view>

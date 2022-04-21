@@ -1,0 +1,31 @@
+.dark .container {
+  background: #1e1f25;
+ }
+ 
+ .dark .bg {
+ background: linear-gradient(to bottom, #27282e, #313238);
+ }
+ 
+ .dark .header{
+  background: #27282e;
+ box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, .3);
+ color: #8a8b8e;
+ }
+ .dark .model {
+  background: #27282e;
+  box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, .3);
+}
+ 
+ .dark .content {
+   background: #27282e;
+   color: #8a8b8e;
+ }
+
+ .dark .learn-title {
+   color: #8a8b8e;
+ }
+
+ .dark .learn-item {
+  background: #27282e;
+  color: #8a8b8e;
+ }

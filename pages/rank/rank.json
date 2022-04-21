@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index"
+  },
+  "navigationBarBackgroundColor": "#42b983",
+  "navigationBarTitleText": "排行榜"
+}

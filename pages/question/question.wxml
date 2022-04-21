@@ -1,0 +1,124 @@
+<!--pages/question/question.wxml-->
+
+<view class="{{isDark ? 'dark' : ''}}">
+  <view class="q_question">
+    <view class="question" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <l-message content="{{content}}" />
+      <view class="select-mode">
+        <view class="{{!isMemory ? 'mode-left isRight' : 'mode-left'}}" data-status="{{false}}" bindtap="clickMode">答题模式
+        </view>
+        <view class="{{isMemory ? 'mode-right isRight' : 'mode-right'}}" data-status="{{true}}" bindtap="clickMode">背题模式
+        </view>
+      </view>
+
+      <view class="titles">
+        <view class="title-left">
+          <text class="num">单选题</text>
+          <text class="tag"
+            wx:if="{{quizList[isCurrentIndex].catagory || quizList[isCurrentIndex].chapter}}">{{quizList[isCurrentIndex].catagory
+            || quizList[isCurrentIndex].chapter}}</text>
+        </view>
+        <view class="title-right">
+          <text class="feedback" bindtap="showFeedBack">报错</text>
+        </view>
+      </view>
+
+      <view class="quiz_main" style="height: {{scrollViewHeight}}px" wx:for="{{quizList}}"
+        wx:if="{{index == isCurrentIndex}}">
+        <text class="title">{{item.memory ? item.memory : index + 1}}.{{item.question}}</text>
+        <view class="quiz_choice">
+          <button
+            class="{{!isMemory ?  (isSelect == 'A' && isSelect == item.answer ? 'isRight' : (isSelect == 'A' && isSelect != item.answer ? 'isError' : (isSelect != 'A' && isChecked && 'A' == item.answer ? 'isRight' : ''))) :( item.answer == 'A' ? 'isRight' : '')}}"
+            style="{{isChecked || isMemory ? 'pointer-events: none;' : ''}}" bindtap="judges"
+            data-option='A'>A.{{item.A}}</button>
+          <button
+            class="{{!isMemory ?  (isSelect == 'B' && isSelect == item.answer ? 'isRight' : (isSelect == 'B' && isSelect != item.answer ? 'isError' : (isSelect != 'B' && isChecked && 'B' == item.answer ? 'isRight' : ''))) :( item.answer == 'B' ? 'isRight' : '')}}"
+            style="{{isChecked || isMemory ? 'pointer-events: none;' : ''}}" bindtap="judges"
+            data-option='B'>B.{{item.B}}</button>
+          <button
+            class="{{!isMemory ?  (isSelect == 'C' && isSelect == item.answer ? 'isRight' : (isSelect == 'C' && isSelect != item.answer ? 'isError' : (isSelect != 'C' && isChecked && 'C' == item.answer ? 'isRight' : ''))) :( item.answer == 'C' ? 'isRight' : '')}}"
+            style="{{isChecked || isMemory ? 'pointer-events: none;' : ''}}" bindtap="judges"
+            data-option='C'>C.{{item.C}}</button>
+          <button
+            class="{{!isMemory ?  (isSelect == 'D' && isSelect == item.answer ? 'isRight' : (isSelect == 'D' && isSelect != item.answer ? 'isError' : (isSelect != 'D' && isChecked && 'D' == item.answer ? 'isRight' : ''))) :( item.answer == 'D' ? 'isRight' : '')}}"
+            style="{{isChecked || isMemory ? 'pointer-events: none;' : ''}}" bindtap="judges"
+            data-option='D'>D.{{item.D}}</button>
+        </view>
+        <view class="quiz_desc" wx:if="{{(isSelect && isSelect != item.answer) || isMemory}}">
+          <text class="title">解析:<text>{{item.analysis != null ? item.analysis : '暂无解析'}}</text></text>
+        </view>
+      </view>
+      <l-popup show="{{isFeedback}}" bind:lintap="hidePopup" data-status="isFeedback">
+        <view class="show-content feed">
+          <view class="feed-title">{{(quizList[isCurrentIndex].memory) ||
+            isCurrentIndex+1}}.{{quizList[isCurrentIndex].question}}</view>
+          <view class="tip">请选择正确答案并提交反馈</view>
+          <view class="danger">注意：请不要恶意提交，不然会扣天数的哦</view>
+          <view class="options">
+            <l-radio-group bind:linchange="setFeedItem">
+              <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="A">A.{{quizList[isCurrentIndex].A}}</l-radio>
+              <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="B">B.{{quizList[isCurrentIndex].B}}</l-radio>
+              <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="C">C.{{quizList[isCurrentIndex].C}}</l-radio>
+              <l-radio l-class="{{isDark ? 'radio-text' : ''}}" key="D">D.{{quizList[isCurrentIndex].D}}</l-radio>
+            </l-radio-group>
+          </view>
+          <view class="commit"><button class="feed-btn" bindtap="putFeedback">确认提交</button></view>
+        </view>
+      </l-popup>
+    </view>
+
+
+    <view class="nav_menu" wx:if="{{quizList.length}}">
+      <view class="left">
+        <l-icon name="like" color="" size="40" bindtap="collectQues"
+          color="{{quizList[isCurrentIndex].isCollect ? '#F4516C' : ''}}" data-id="{{isCurrentIndex}}"></l-icon>
+      </view>
+      <view class="right">
+        <view class="nums">
+          <image class="img" src="/img/dui.png"></image>{{rightNum}}
+        </view>
+        <view class="nums">
+          <image class="img" src="/img/cuo.png"></image>{{wrongNum}}
+        </view>
+        <view class="nums" bindtap="showInfo">
+          <image class="menus" src="/img/gongneng.png"></image>{{isCurrentIndex+1}}<text
+            style="color:grey;">/{{quizList.length}}</text>
+        </view>
+      </view>
+    </view>
+
+
+    <l-popup show="{{isInfo}}" content-align="bottom" bind:lintap="hidePopup" data-status="isInfo">
+      <view class="questions">
+        <view class="info-title">
+          <view class="left">
+            <l-icon name="like" color="" size="40" bindtap="collectQues"
+              color="{{quizList[isCurrentIndex].isCollect ? '#F4516C' : ''}}" data-id="{{isCurrentIndex}}"></l-icon>
+          </view>
+          <view class="right">
+            <view class="nums">
+              <image class="img" src="/img/dui.png"></image>{{rightNum}}
+            </view>
+            <view class="nums">
+              <image class="img" src="/img/cuo.png"></image>{{wrongNum}}
+            </view>
+            <view class="nums" bindtap="showInfo">
+              <image class="menus" src="/img/gongneng.png"></image>{{isCurrentIndex+1}}<text
+                style="color:grey;">/{{quizList.length}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="info">
+          <scroll-view style="height: {{scrollViewHeight*0.5}}px" scroll-y="true">
+            <block wx:for="{{quizList.length}}">
+              <text class="choice" style="{{index == isCurrentIndex ? 'border:4rpx solid #1b8cfa;color:#1b8cfa;' : ''}}"
+                bindtap="navigoQuestion" data-index='{{index}}'>{{index+1}}</text>
+            </block>
+
+          </scroll-view>
+
+        </view>
+      </view>
+    </l-popup>
+  </view>
+</view>
